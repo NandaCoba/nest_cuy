@@ -1,13 +1,20 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { SiswaService } from './siswa.service';
+import { SekolahService } from 'src/sekolah/sekolah.service';
 
 @Controller('siswa')
 export class SiswaController {
-    constructor(private readonly siswaService: SiswaService) {}
+    constructor(private readonly siswaService: SiswaService,private readonly sekolahService: SekolahService) {}
 
     @Get()
     async getAllSiswa(){
         const data = await this.siswaService.getAllSiswaService()
+        return { data }
+    }
+
+    @Get("/sekolah")
+    async getAllSiswaAndSekolah(){
+        const data = await this.sekolahService.getAllSiswaSekolahService()
         return { data }
     }
 

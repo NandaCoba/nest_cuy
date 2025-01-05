@@ -9,6 +9,15 @@ export class SekolahService {
     }
 
 
+    async getAllSiswaSekolahService(){
+        return await prisma.sekolah.findMany({
+            include : {
+                Siswa : true
+            }
+        })
+    }
+
+
     async getSekolahByIdService(id){
         return await prisma.sekolah.findUnique({
             where : {
